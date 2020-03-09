@@ -1,6 +1,7 @@
 package ie.tudublin;
 
-import example.MyVisual;
+// import example.MyVisual;
+import C18735641.MyVisual;
 
 public class Main
 {	
