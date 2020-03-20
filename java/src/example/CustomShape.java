@@ -4,10 +4,6 @@ import ie.tudublin.Visual;
 
 public class CustomShape extends Visual
 {
-    public CustomShape(float angle)
-    {
-        this.angle = angle;
-    }
 
     public void settings()
     {
