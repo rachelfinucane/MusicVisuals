@@ -48,7 +48,7 @@ public class CubeVisual extends Visual
         calculateAverageAmplitude();
         background(0);
         noFill();
-        // lights();
+        lights();
         stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
         camera(0, 0, 0, 0, 0, -1, 0, 1, 0);
         translate(0, 0, -250);
