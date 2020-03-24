@@ -2,12 +2,12 @@ package example;
 
 import ie.tudublin.Visual;
 
-public class ProceduralShape extends Visual
+public class SpinningCubes extends Visual
 {
     public void settings()
     {
-        //size(800, 800, P3D);
-        fullScreen(P3D, SPAN);
+        size(800, 800, P3D);
+        // fullScreen(P3D, SPAN);
     }
 
     public void keyPressed()

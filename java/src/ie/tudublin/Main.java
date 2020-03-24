@@ -3,7 +3,8 @@ package ie.tudublin;
 import example.CubeVisual;
 import example.CustomShape;
 import example.MyVisual;
-import example.ProceduralShape;
+import example.Procedural;
+import example.Procedural;
 
 public class Main
 {	
@@ -11,7 +12,7 @@ public class Main
 	public void startUI()
 	{
 		String[] a = {"MAIN"};
-        processing.core.PApplet.runSketch( a, new ProceduralShape());
+        processing.core.PApplet.runSketch( a, new Procedural());
 		
 	}
 
