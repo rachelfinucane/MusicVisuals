@@ -52,11 +52,12 @@ public class Procedural extends Visual
     float smoothedPyrSize = 0;
     float angle = 0;
     int num = 10;
-    int smoothed_num = 3;
+    float smoothed_num = 3;
     int polarity = 1;
     float offset = 0;
     float distance = 0;
     float maxAmp = 0;
+    float ang_speed = PI / 10;
 
     public void draw()
     {
@@ -67,41 +68,30 @@ public class Procedural extends Visual
         camera(0, 0, 0, 0, 0, -1, 0, 1, 0);
         translate(0, 0, -250);
 
-        float amp = getSmoothedAmplitude();
-        if(amp < 0.2)
-        {
-            smoothed_num = 3;
-        }
-        else if (amp < 0.6)
-        {
-            smoothed_num = 4;
-        }
-        else if(amp < 0.8)
-        {
-            smoothed_num = 5;
-        }
-        else
-        {
-            smoothed_num = 6;
-        }
-        // int num_shapes = (int)(map(getSmoothedAmplitude(), 0, 1, 3, 10));
-        // smoothed_num = (int)lerp(smoothed_num, num_shapes, 1);
+        int shape_num;
+
+        float num_shapes = map(getSmoothedAmplitude(), 0f, 1f, 3f, 8f);
+        smoothed_num = lerp(smoothed_num, num_shapes, 0.2f);
+        shape_num = (int)smoothed_num;
        
         float x, y;
         float angle = 0;
-        float ang_inc = TWO_PI / (float)smoothed_num;
+        float ang_inc = TWO_PI / (float)shape_num;
+
+        // make rotate
         // make loop
-        for(int i = 0; i < smoothed_num; i++)
+        for(int i = 0; i < shape_num; i++)
         {
             pushMatrix();
-            x = (height / 10) * cos(angle);
-            y = (height / 10) * sin(angle);
+            x = (height / 10) * cos(angle + ang_speed);
+            y = (height / 10) * sin(angle + ang_speed);
             translate(x, y, 0);
             angle += ang_inc;
             drawShape();
             popMatrix();
             
         }
+        ang_speed += map(getSmoothedAmplitude(), 0f, 1f, 0.01f, -0.01f);
     }
 
     public void drawShape()
