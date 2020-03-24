@@ -52,7 +52,7 @@ public class Procedural extends Visual
     float smoothedPyrSize = 0;
     float angle = 0;
     int num = 10;
-    int smoothed_num = 0;
+    int smoothed_num = 3;
     int polarity = 1;
     float offset = 0;
     float distance = 0;
@@ -66,13 +66,17 @@ public class Procedural extends Visual
         stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
         camera(0, 0, 0, 0, 0, -1, 0, 1, 0);
         translate(0, 0, -250);
-        int num = (int)(map(getSmoothedAmplitude(), 0, 1, 3, 10));
-        smoothed_num = (int)lerp(smoothed_num, num, 1);
+        int num_shapes = (int)(map(getSmoothedAmplitude(), 0, 1, 3, 10));
+        // smoothed_num = (int)lerp(smoothed_num, num, 1);
+        if(num_shapes > smoothed_num)
+        {
+            smoothed_num = num;
+        }
         float x, y;
         float angle = 0;
-        float ang_inc = TWO_PI / (float)num;
+        float ang_inc = TWO_PI / (float)smoothed_num;
         // make loop
-        for(int i = 0; i < num; i++)
+        for(int i = 0; i < smoothed_num; i++)
         {
             pushMatrix();
             x = (height / 10) * cos(angle);
