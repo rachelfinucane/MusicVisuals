@@ -8,8 +8,9 @@ public class CubeVisual extends Visual
 
     public void settings()
     {
-        //size(800, 800, P3D);
-        fullScreen(P3D, SPAN);
+        size(800, 800, P3D);
+        println("CWD: " + System.getProperty("user.dir"));
+        //fullScreen(P3D, SPAN);
     }
 
     public void keyPressed()
@@ -86,4 +87,4 @@ public class CubeVisual extends Visual
         angle += 0.01f;
     }
     float angle = 0;
-}
+} 
