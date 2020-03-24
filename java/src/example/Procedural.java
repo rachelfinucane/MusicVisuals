@@ -66,12 +66,27 @@ public class Procedural extends Visual
         stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
         camera(0, 0, 0, 0, 0, -1, 0, 1, 0);
         translate(0, 0, -250);
-        int num_shapes = (int)(map(getSmoothedAmplitude(), 0, 1, 3, 10));
-        // smoothed_num = (int)lerp(smoothed_num, num, 1);
-        if(num_shapes > smoothed_num)
+
+        float amp = getSmoothedAmplitude();
+        if(amp < 0.2)
         {
-            smoothed_num = num;
+            smoothed_num = 3;
         }
+        else if (amp < 0.6)
+        {
+            smoothed_num = 4;
+        }
+        else if(amp < 0.8)
+        {
+            smoothed_num = 5;
+        }
+        else
+        {
+            smoothed_num = 6;
+        }
+        // int num_shapes = (int)(map(getSmoothedAmplitude(), 0, 1, 3, 10));
+        // smoothed_num = (int)lerp(smoothed_num, num_shapes, 1);
+       
         float x, y;
         float angle = 0;
         float ang_inc = TWO_PI / (float)smoothed_num;
