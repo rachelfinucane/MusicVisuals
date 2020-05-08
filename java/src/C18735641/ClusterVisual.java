@@ -12,7 +12,7 @@ public class ClusterVisual {
         mv.colorMode(3);
         int numSpheres = mv.getBands().length;
         float radius = mv.height / 50;
-        float dist = MyVisual.map(mv.getSmoothedAmplitude(), 0, 1, 0, 6 * radius);
+        float dist = MyVisual.map(mv.getSmoothedAmplitude(), 0, 1, 2 * radius, 0.7f * mv.height);
         float offset = 50;
         float angle, X, Y;
         float colour;
@@ -30,7 +30,7 @@ public class ClusterVisual {
             for (int j = 0; j < numSpheres * i; j++) {
                 
                 offset = radius * i;
-                freqBandRadius = MyVisual.map(mv.getSmoothedBands()[i], 0, 1000, 0.5f * radius, radius);
+                freqBandRadius = MyVisual.map(mv.getSmoothedBands()[i], 0, 1000, 0.4f * radius, 1.6f * radius);
                 angle = MyVisual.map(j, 0, numSpheres * i, 0, MyVisual.TWO_PI);
 
                 mv.pushMatrix();
