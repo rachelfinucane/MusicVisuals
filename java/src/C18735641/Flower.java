@@ -47,10 +47,10 @@ public class Flower {
             pY = MyVisual.map(mv.getSmoothedBands()[i], 0, 1000, mv.height / 12, mv.height / 2);
 
             for (int j = 0; j < numPetals; j++) {
-                rowAngleOffset = MyVisual.map(i, 0, numPetals, 0, MyVisual.HALF_PI);
+                rowAngleOffset = MyVisual.map(i, 0, numPetals, MyVisual.HALF_PI, 0);
                 mv.pushMatrix();
                 mv.rotateX(rowAngleOffset);
-                mv.ellipse(rX, rY, pX, pY);
+                mv.ellipse(rX, rY + (pY / 2), pX, pY);
                 
                 mv.popMatrix();
                 mv.rotate(MyVisual.TWO_PI / numPetals);
