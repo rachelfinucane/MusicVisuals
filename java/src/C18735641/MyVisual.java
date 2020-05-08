@@ -32,7 +32,7 @@ public class MyVisual extends Visual
         
         // wf = new WaveForm(this);
         // abv = new AudioBandsVisual(this);
-        fl = new Flower(this);
+        // fl = new Flower(this);
     }
 
     public void keyPressed()
