@@ -9,9 +9,10 @@ public class ClusterVisual {
 
     public void render() {
 
+        mv.colorMode(3);
         int numSpheres = mv.getBands().length;
-        float radius = mv.height / 50f;
-        float dist = MyVisual.map(mv.getSmoothedAmplitude(), 0, 1, radius * 0.5f, mv.height * 0.4f);
+        float radius = mv.height / 50;
+        float dist = MyVisual.map(mv.getSmoothedAmplitude(), 0, 1, 0, 6 * radius);
         float offset = 50;
         float angle, X, Y;
         float colour;
@@ -21,17 +22,17 @@ public class ClusterVisual {
         mv.translate((mv.width / 2), mv.height / 2);
         mv.pushMatrix();
         for (int i = 0; i < numSpheres; i++) {
-
             colour = MyVisual.map(i, 0, numSpheres, 0, 255);
             mv.noStroke();
             mv.lights();
             mv.fill(colour, 255, 255);
-            // mv.pushMatrix();
+            mv.pushMatrix();
             for (int j = 0; j < numSpheres * i; j++) {
-
-                offset = 2 * radius * i;
+                
+                offset = radius * i;
                 freqBandRadius = MyVisual.map(mv.getSmoothedBands()[i], 0, 1000, 0.5f * radius, radius);
                 angle = MyVisual.map(j, 0, numSpheres * i, 0, MyVisual.TWO_PI);
+
                 mv.pushMatrix();
                 X = MyVisual.cos(angle) * (dist + offset);
                 Y = -MyVisual.sin(angle) * (dist + offset);
@@ -39,10 +40,20 @@ public class ClusterVisual {
 
                 mv.sphere(freqBandRadius);
                 mv.popMatrix();
-                // mv.rotateX(MyVisual.TWO_PI / (numSpheres * i) );
+
+                mv.pushMatrix();
+                mv.rotateX(MyVisual.PI);
+                X = MyVisual.cos(angle) * (dist + offset);
+                Y = -MyVisual.sin(angle) * (dist + offset);
+                mv.translate(X, Y, 0);
+
+                mv.sphere(freqBandRadius);
+                mv.popMatrix();
+
+                mv.rotateX(MyVisual.TWO_PI / (numSpheres * i) );
             }
-            // mv.popMatrix();
-            mv.rotateX(MyVisual.TWO_PI / numSpheres);
+            mv.popMatrix();
+            mv.rotateX(MyVisual.TWO_PI / (numSpheres ) );
         }
         mv.popMatrix();
         mv.popMatrix();

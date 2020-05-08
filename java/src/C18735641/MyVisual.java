@@ -28,6 +28,7 @@ public class MyVisual extends Visual
         loadAudio("Joywave - 01. Obsession.mp3");   
 
         
+        
         // Call this instead to read audio from the microphone
         // startListening(); 
         
