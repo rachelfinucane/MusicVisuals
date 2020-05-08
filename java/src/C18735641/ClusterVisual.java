@@ -28,7 +28,7 @@ public class ClusterVisual {
             mv.noStroke();
             mv.lights();
             mv.fill(colour, 255, 255);
-            // mv.pushMatrix();
+            mv.pushMatrix();
             for (int j = 0; j < numSpheres * i; j++)
             {
                 
@@ -41,9 +41,9 @@ public class ClusterVisual {
 
                 mv.sphere(radius);
                 mv.popMatrix();
-                // mv.rotateX(MyVisual.TWO_PI / numSpheres);
+                mv.rotateX(MyVisual.TWO_PI / numSpheres);
             }
-            // mv.popMatrix();
+            mv.popMatrix();
             // mv.rotateX(MyVisual.TWO_PI / numSpheres);
         }
         mv.popMatrix();
