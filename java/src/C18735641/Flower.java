@@ -11,12 +11,23 @@ public class Flower {
 
     public void render()
     {
-        float gap = mv.width / (float) mv.getBands().length;
+        // center of bottom of rose
+        float rX = 0;
+        float rY = 0;
+
+        // size of petal
+        float pX = 40;
+        float pY = 70;
+
+        mv.pushMatrix();
+        // translate to center of screen
+        mv.translate(mv.width / 2, mv.height / 2);
+
         mv.noStroke();
-        for(int i = 0 ; i < mv.getBands().length ; i ++)
-        {
-            mv.fill(PApplet.map(i, 0, mv.getBands().length, 255, 0), 255, 255);
-            mv.rect(i * gap, mv.height, gap,-mv.getSmoothedBands()[i] * 0.2f); 
-        }
+        mv.fill(230, 255, 255);
+        
+        mv.pushMatrix();
+        mv.ellipse(rX, rY, pX, pY);
+        
     }
 }
