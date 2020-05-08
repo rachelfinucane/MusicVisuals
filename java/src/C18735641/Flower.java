@@ -11,7 +11,7 @@ public class Flower {
 
     public void render() {
         int numPetals = 8;
-        int numRows = 5;
+        int numRows = mv.getBands().length; // was 5
         float pOffset = PConstants.PI * 0.3f;
         float rowAngleOffset = 0.1f;
 
@@ -36,7 +36,10 @@ public class Flower {
 
         for (int i = 0; i < numRows; i++) {
             mv.pushMatrix(); // push translated screen
+
             mv.fill(rColor, 255, 255);
+            pX = MyVisual.map(mv.getSmoothedBands()[i], 0f, 1f, mv.height / 3f, mv.height / 2f);
+
             for (int j = 0; j < numPetals; j++) {
                 mv.pushMatrix();
                 mv.rotateX(PConstants.PI * rowAngleOffset);
