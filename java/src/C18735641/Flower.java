@@ -13,7 +13,9 @@ public class Flower {
         int numPetals = 8;
         int numRows = mv.getBands().length; // was 5
         float pOffset = PConstants.HALF_PI * 0.3f;
-        float rowAngleOffset = MyVisual.PI / mv.getBands().length * -1;
+        // float rowAngleOffset = MyVisual.PI / mv.getBands().length * -1; // this is cool and makes a "powder puff", but not a flower
+        // float rowAngleOffset = MyVisual.HALF_PI / mv.getBands().length;
+        float rowAngleOffset = 0;
 
         // size of petal
         float pX = 50;
@@ -30,9 +32,9 @@ public class Flower {
         // translate to center of screen
         mv.translate(mv.width / 2, mv.height / 2);
         // rotate rose to see side on
-        // mv.rotateX(PConstants.PI * 0.4f) ;
-        mv.rotateX(mv.mouseX*0.1f);
-        mv.rotateY(mv.mouseY*0.1f);
+        mv.rotateX(PConstants.PI * 0.3f) ;
+        // mv.rotateX(mv.mouseX*0.1f);
+        // mv.rotateY(mv.mouseY*0.1f);
         MyVisual.println(mv.getBands().length);
 
         mv.noStroke();
@@ -42,11 +44,12 @@ public class Flower {
 
             mv.fill(rColor, 255, 255);
             // pX = mv.getSmoothedBands()[numRows - i - 1] * 0.2f;
-            // pY = MyVisual.map(mv.getSmoothedBands()[i], 0, 1000, mv.height / 12, mv.height / 2);
+            pY = MyVisual.map(mv.getSmoothedBands()[i], 0, 1000, mv.height / 12, mv.height / 2);
 
             for (int j = 0; j < numPetals; j++) {
+                rowAngleOffset = MyVisual.map(i, 0, numPetals, 0, MyVisual.HALF_PI);
                 mv.pushMatrix();
-                mv.rotateX(MyVisual.PI * rowAngleOffset);
+                mv.rotateX(rowAngleOffset);
                 mv.ellipse(rX, rY, pX, pY);
                 
                 mv.popMatrix();
@@ -62,8 +65,6 @@ public class Flower {
             // reduce petal size
             pY = pY * 0.9f;
             rColor += (255 / numRows);
-
-            rowAngleOffset += 0.1f;
         }
 
         // mv.pushMatrix(); // push translated screen
