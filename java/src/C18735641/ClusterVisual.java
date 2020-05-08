@@ -1,7 +1,5 @@
 package C18735641;
 
-import processing.core.*;
-
 public class ClusterVisual {
     MyVisual mv;
 
@@ -15,9 +13,9 @@ public class ClusterVisual {
         // then change the radius based on amplitude
 
         int numSpheres = 8;
-        float radius = mv.height / 30f;
-        float dist = MyVisual.map(mv.getSmoothedAmplitude(), 0, 1, 3 * radius, mv.height * 0.5f);
-        float offset = 0;
+        float radius = mv.height / 50f;
+        float dist = MyVisual.map(mv.getSmoothedAmplitude(), 0, 1, radius * 0.5f, mv.height * 0.4f);
+        float offset = 50;
         float angle, X, Y;
         float colour;
 
@@ -30,10 +28,12 @@ public class ClusterVisual {
             mv.noStroke();
             mv.lights();
             mv.fill(colour, 255, 255);
-            for (int j = 0; j < numSpheres; j++)
+            // mv.pushMatrix();
+            for (int j = 0; j < numSpheres * i; j++)
             {
-
-                angle = MyVisual.map(j, 0, numSpheres, 0, MyVisual.TWO_PI);
+                
+                offset = 2 * radius * i;
+                angle = MyVisual.map(j, 0, numSpheres * i, 0, MyVisual.TWO_PI);
                 mv.pushMatrix();
                 X = MyVisual.cos(angle) * (dist + offset);
                 Y = -MyVisual.sin(angle) * (dist + offset);
@@ -41,7 +41,10 @@ public class ClusterVisual {
 
                 mv.sphere(radius);
                 mv.popMatrix();
+                // mv.rotateX(MyVisual.TWO_PI / numSpheres);
             }
+            // mv.popMatrix();
+            // mv.rotateX(MyVisual.TWO_PI / numSpheres);
         }
         mv.popMatrix();
         mv.popMatrix();
