@@ -6,7 +6,7 @@ public class MyVisual extends Visual
 {    
     // WaveForm wf;
     // AudioBandsVisual abv;
-    Flower fl;
+    // Flower fl;
 
     public void settings()
     {
@@ -64,6 +64,6 @@ public class MyVisual extends Visual
         calculateAverageAmplitude();        
         // wf.render();
         // abv.render();
-        fl.render();
+        // fl.render();
     }
 }
