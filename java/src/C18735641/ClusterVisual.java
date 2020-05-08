@@ -39,7 +39,7 @@ public class ClusterVisual {
 
                 mv.sphere(freqBandRadius);
                 mv.popMatrix();
-                mv.rotateX(MyVisual.TWO_PI / numSpheres);
+                mv.rotateX(MyVisual.TWO_PI / (numSpheres * i) );
             }
             mv.popMatrix();
         }
