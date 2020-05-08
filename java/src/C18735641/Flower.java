@@ -27,7 +27,7 @@ public class Flower {
         // translate to center of screen
         mv.translate(mv.width / 2, mv.height / 2);
         // rotate rose to see side on
-        mv.rotate(PConstants.HALF_PI + 40f) ;
+        mv.rotateX(PConstants.PI * 0.4f) ;
 
         mv.noStroke();
 
