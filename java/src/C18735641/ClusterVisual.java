@@ -9,7 +9,6 @@ public class ClusterVisual {
 
     public void render() {
 
-        mv.colorMode(3);
         int numSpheres = mv.getBands().length;
         float radius = mv.height / 50;
         float dist = MyVisual.map(mv.getSmoothedAmplitude(), 0, 1, 2 * radius, 0.7f * mv.height);
@@ -23,13 +22,14 @@ public class ClusterVisual {
         mv.pushMatrix();
         for (int i = 0; i < numSpheres; i++) {
             colour = MyVisual.map(i, 0, numSpheres, 0, 255);
+            MyVisual.println(colour);
             mv.noStroke();
             mv.lights();
             mv.fill(colour, 255, 255);
             mv.pushMatrix();
             for (int j = 0; j < numSpheres * i; j++) {
                 
-                offset = radius * i;
+                offset = 10 + radius * i;
                 freqBandRadius = MyVisual.map(mv.getSmoothedBands()[i], 0, 1000, 0.4f * radius, 1.6f * radius);
                 angle = MyVisual.map(j, 0, numSpheres * i, 0, MyVisual.TWO_PI);
 
