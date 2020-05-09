@@ -7,6 +7,7 @@ public class MyVisual extends Visual
     // WaveForm wf;
     // AudioBandsVisual abv;
     // Flower fl;
+    ClusterVisual cv;
 
     public void settings()
     {
@@ -27,12 +28,14 @@ public class MyVisual extends Visual
         loadAudio("Joywave - 01. Obsession.mp3");   
 
         
+        
         // Call this instead to read audio from the microphone
         // startListening(); 
         
         // wf = new WaveForm(this);
         // abv = new AudioBandsVisual(this);
         // fl = new Flower(this);
+        cv = new ClusterVisual(this);
     }
 
     public void keyPressed()
@@ -65,5 +68,6 @@ public class MyVisual extends Visual
         // wf.render();
         // abv.render();
         // fl.render();
+        cv.render();
     }
 }
