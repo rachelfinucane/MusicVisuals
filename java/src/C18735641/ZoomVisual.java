@@ -1,42 +1,42 @@
 package C18735641;
 
-import processing.core.*;
-
 public class ZoomVisual {
     MyVisual mv;
-    float distance[];
-    int numCircles;
     float colour = 0;
-    float colourInc;
-    float dist = 0;
 
     public ZoomVisual(MyVisual mv) {
         this.mv = mv;
-        numCircles = mv.getBands().length;
-        distance = new float[numCircles];
-        for (int i = 0; i < numCircles; i++) {
-            distance[i] = MyVisual.map(i, 0, numCircles, 0, mv.width);
-        }
-        colourInc = 255 / numCircles;
+
     }
 
     public void render() {
 
+        float colour = 0;
         float max = 2 * mv.width;
         float curr = max;
-        int del = (int) MyVisual.map(mv.getSmoothedAmplitude(), 0, 1, 80, 120);
+        int del = 200;
+        int numCircs = 30;
+        float colourInc = 255 / numCircs;
 
         mv.noStroke();
         mv.translate(mv.width / 2, mv.height / 2);
         mv.delay(del);
         // drawCircles(max);
         while (curr > 0) {
-            
-            colour = (colour + 10) % 255;
+
+            // colour = (colour + 10) % 255;
+            colour = (colour + colourInc) % 255;
             mv.fill(colour, 255, 255);
             mv.circle(0, 0, curr);
+            // //curr -= MyVisual.map(mv.getSmoothedAmplitude(), 0, 1, 80, 110);
+            // curr -= 10;
 
-            curr -= 30;
+            if (mv.getAmplitude() > 0) {
+                curr -= max / numCircs - MyVisual.map(mv.getSmoothedAmplitude(), 0, 1, 0, 70);
+            } else {
+                curr -= max / numCircs;
+            }
+
         }
 
     }
