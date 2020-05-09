@@ -1,13 +1,18 @@
 package C18735641;
 
+import java.util.ArrayList;
+
 import ie.tudublin.*;
 
 public class MyVisual extends Visual
 {    
     // WaveForm wf;
     // AudioBandsVisual abv;
-    // Flower fl;
+    Flower fl;
     ClusterVisual cv;
+    MySketch currentSketch;
+
+    ArrayList<MySketch> sketches = new ArrayList<MySketch>();
 
     public void settings()
     {
@@ -34,17 +39,32 @@ public class MyVisual extends Visual
         
         // wf = new WaveForm(this);
         // abv = new AudioBandsVisual(this);
-        // fl = new Flower(this);
+        fl = new Flower(this);
         cv = new ClusterVisual(this);
+
+        sketches.add(fl);
+        sketches.add(cv);
+
+        // currentSketch = currentSketch = sketches.get(0);
+        currentSketch = fl;
+
+
     }
 
     public void keyPressed()
     {
+        int i = 1;
+
         if (key == ' ')
         {
             getAudioPlayer().cue(0);
             getAudioPlayer().play();
         }
+        // if (key == 'f')
+        // {
+        //     currentSketch = sketches.get(i);
+        //     i = (i + 1) % sketches.size();
+        // }
     }
 
     public void draw()
@@ -69,5 +89,6 @@ public class MyVisual extends Visual
         // abv.render();
         // fl.render();
         cv.render();
+        // currentSketch.render();
     }
 }

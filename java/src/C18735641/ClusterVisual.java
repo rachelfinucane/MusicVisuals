@@ -1,10 +1,10 @@
 package C18735641;
 
-public class ClusterVisual {
+public class ClusterVisual extends MySketch{
     MyVisual mv;
 
     public ClusterVisual(MyVisual mv) {
-        this.mv = mv;
+        super(mv);
     }
 
     public void render() {
