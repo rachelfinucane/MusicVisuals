@@ -1,19 +1,17 @@
 package C18735641;
 
-import java.util.ArrayList;
-
 import ie.tudublin.*;
 
 public class MyVisual extends Visual {
     // WaveForm wf;
     // AudioBandsVisual abv;
-    // MySketch fl;
     Flower fl;
     ClusterVisual cv;
+    BoxZoom bz;
+    ZoomVisual zv;
+
     int currentSketch = 1;
-
-    ArrayList<Object> sketches = new ArrayList<Object>();
-
+    
     public void settings() {
         size(800, 800, P3D);
 
@@ -37,13 +35,8 @@ public class MyVisual extends Visual {
         // abv = new AudioBandsVisual(this);
         fl = new Flower(this);
         cv = new ClusterVisual(this);
-
-        // sketches.add(fl);
-        // sketches.add(cv);
-
-        // currentSketch = currentSketch = sketches.get(0);
-        // currentSketch = fl;
-
+        zv = new ZoomVisual(this);
+        bz = new BoxZoom(this);
     }
 
     public void keyPressed()
@@ -61,6 +54,14 @@ public class MyVisual extends Visual {
         if (key == '2')
         {
             currentSketch = 2;
+        }
+        if (key == '3')
+        {
+            currentSketch = 3;
+        }
+        if (key == '4')
+        {
+            currentSketch = 4;
         }
         
     }
@@ -89,6 +90,14 @@ public class MyVisual extends Visual {
         if(currentSketch == 2)
         {
             cv.render();
+        }
+        if(currentSketch == 3)
+        {
+            bz.render();
+        }
+        if(currentSketch == 4)
+        {
+            zv.render();
         }
     }
 }
