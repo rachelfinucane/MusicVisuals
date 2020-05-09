@@ -6,7 +6,7 @@ public class MyVisual extends Visual
 {    
     // WaveForm wf;
     // AudioBandsVisual abv;
-    // Flower fl;
+    Flower fl;
     ClusterVisual cv;
 
     public void settings()
@@ -34,7 +34,7 @@ public class MyVisual extends Visual
         
         // wf = new WaveForm(this);
         // abv = new AudioBandsVisual(this);
-        // fl = new Flower(this);
+        fl = new Flower(this);
         cv = new ClusterVisual(this);
     }
 
@@ -67,7 +67,7 @@ public class MyVisual extends Visual
         calculateAverageAmplitude();        
         // wf.render();
         // abv.render();
-        // fl.render();
-        cv.render();
+        fl.render();
+        // cv.render();
     }
 }
