@@ -26,13 +26,11 @@ public class ClusterVisual {
             mv.lights();
             mv.fill(colour, 255, 255);
             offset = radius * i;
-            MyVisual.println("i: " + i + "offset " + offset);
             mv.pushMatrix();
-            for (int j = 0; j < numSpheres * (i + 1); j++) {
+            for (int j = 0; j < numSpheres + 2 * i; j++) {
 
                 freqBandRadius = MyVisual.map(mv.getSmoothedBands()[i], 0, 1000, 0.4f * radius, 1.6f * radius);
-                angle = MyVisual.map(j, 0, numSpheres * (i + 1), 0, MyVisual.TWO_PI);
-                MyVisual.println("angle: " + angle);
+                angle = MyVisual.map(j, 0, numSpheres + 2 * i, 0, MyVisual.TWO_PI);
 
                 mv.pushMatrix();
                 X = MyVisual.cos(angle) * (dist + offset);
@@ -51,7 +49,7 @@ public class ClusterVisual {
                 mv.sphere(freqBandRadius);
                 mv.popMatrix();
 
-                mv.rotateX(MyVisual.TWO_PI / (numSpheres * i));
+                mv.rotateX(MyVisual.TWO_PI / (numSpheres + ( 2 * i)));
             }
             mv.popMatrix();
             mv.rotateX(MyVisual.TWO_PI / (numSpheres));
