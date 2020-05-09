@@ -2,11 +2,11 @@ package C18735641;
 
 import processing.core.*;
 
-public class Flower extends MySketch{
+public class Flower {
     MyVisual mv;
 
     public Flower(MyVisual mv) {
-        super(mv);
+        this.mv = mv;
     }
 
     public void render() {
