@@ -9,6 +9,7 @@ public class MyVisual extends Visual {
     ClusterVisual cv;
     BoxZoom bz;
     ZoomVisual zv;
+    TreeVisual tv;
 
     int currentSketch = 1;
     
@@ -37,6 +38,7 @@ public class MyVisual extends Visual {
         cv = new ClusterVisual(this);
         zv = new ZoomVisual(this);
         bz = new BoxZoom(this);
+        tv = new TreeVisual(this);
     }
 
     public void keyPressed()
@@ -62,6 +64,10 @@ public class MyVisual extends Visual {
         if (key == '4')
         {
             currentSketch = 4;
+        }
+        if (key == '5')
+        {
+            currentSketch = 5;
         }
         
     }
@@ -98,6 +104,10 @@ public class MyVisual extends Visual {
         if(currentSketch == 4)
         {
             zv.render();
+        }
+        if (currentSketch == 4)
+        {
+            tv.render();
         }
     }
 }
