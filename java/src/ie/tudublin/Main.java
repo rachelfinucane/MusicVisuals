@@ -1,7 +1,12 @@
 package ie.tudublin;
 
+<<<<<<< HEAD
 import C18735641.*;
 
+=======
+
+import C18735641.*;
+>>>>>>> feature_tree
 
 public class Main
 {	
@@ -10,6 +15,10 @@ public class Main
 	{
 		String[] a = {"MAIN"};
 
+<<<<<<< HEAD
+=======
+        // processing.core.PApplet.runSketch( a, new RotatingAudioBands());		
+>>>>>>> feature_tree
 
         // processing.core.PApplet.runSketch( a, new RotatingAudioBands());		
 
