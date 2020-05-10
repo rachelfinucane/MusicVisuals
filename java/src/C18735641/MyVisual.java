@@ -105,7 +105,7 @@ public class MyVisual extends Visual {
         {
             zv.render();
         }
-        if (currentSketch == 4)
+        if (currentSketch == 5)
         {
             tv.render();
         }
