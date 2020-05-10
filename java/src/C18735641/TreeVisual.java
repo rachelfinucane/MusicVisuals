@@ -106,11 +106,12 @@ public class TreeVisual {
             mv.fill(colour, 255, 255);
             mv.noStroke();
             mv.pushMatrix();
-            mv.rotate(lnAngle);
-            mv.ellipse(leafX, -bHeight - (leafHeight / 2), 1.5f * distance, leafHeight);
+            // mv.rotate(lnAngle);
+            // mv.ellipse(leafX, -bHeight - (leafHeight / 2), 1.5f * distance, leafHeight);
             // mv.ellipse(0, distance / 2, distance * 0.8f, leafHeight);
             mv.popMatrix();
-            // mv.rotate(MyVisual.TWO_PI / numLines);
+            mv.ellipse(leafHeight, 0, leafHeight, distance * 0.8f);
+            mv.rotate(MyVisual.TWO_PI / numLines);
             
         }
         mv.stroke(255);
