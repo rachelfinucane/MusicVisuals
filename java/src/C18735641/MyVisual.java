@@ -8,7 +8,6 @@ public class MyVisual extends Visual
     // AudioBandsVisual abv;
     Flower fl;
     ClusterVisual cv;
-    BranchVisual v;
     TreeVisual tv;
 
     public void settings()

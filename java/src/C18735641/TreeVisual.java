@@ -1,6 +1,5 @@
 package C18735641;
 
-import processing.core.*;
 
 public class TreeVisual {
     MyVisual mv;
@@ -26,11 +25,8 @@ public class TreeVisual {
         mv.translate(mv.width / 2, mv.height - margin);
         drawBranch(branchHeight);
         mv.popMatrix();
-        BranchVisual b = new BranchVisual(mv);
-        b.render(mv.width / 2, mv.height - margin, branchHeight);
         mv.translate(mv.width / 2, mv.height - margin - branchHeight);
         drawSelf(branchHeight);
-        // drawLeaves(branchHeight);
 
         angle = MyVisual.map(mv.getSmoothedAmplitude(), 0, 1, 1f * staticAngle, 1.5f * staticAngle);
     }
@@ -38,6 +34,7 @@ public class TreeVisual {
     private void drawSelf(float bHeight) {
         bHeight = bHeight * branchReduction;
         if (bHeight > 30) {
+
             mv.pushMatrix();
             mv.rotate(angle);
             drawBranch(bHeight);
@@ -60,8 +57,6 @@ public class TreeVisual {
         int numLines = mv.getBands().length;
         float distance = MyVisual.map(mv.getSmoothedAmplitude(), 0, 1, trunkMin, trunkMax);
         float lnAngle;
-        // float leafHeight;
-        // float leafX;
 
         float x, z;
         for (int i = 0; i < numLines; i++) {
@@ -70,14 +65,7 @@ public class TreeVisual {
             x = MyVisual.cos(lnAngle) * distance;
             z = MyVisual.sin(lnAngle) * distance;
 
-            // leafX = MyVisual.cos(lnAngle) * 1.3f * distance;
-            // leafHeight = MyVisual.map(mv.getSmoothedBands()[i], 0, 1000, leafMin, leafMax);
-
             mv.line(x, 0, z, x, -bHeight, z);
-            // mv.fill(200, 255, 255);
-            // mv.noStroke();
-            // mv.ellipse(leafX, -bHeight - (leafHeight / 2), distance * 0.8f, leafHeight);
-            // mv.stroke(255);
         }
         if(bHeight < branchHeight / 2)
         {
@@ -89,28 +77,20 @@ public class TreeVisual {
     {
         int numLines = mv.getBands().length;
         float distance = MyVisual.map(mv.getSmoothedAmplitude(), 0, 1, trunkMin, trunkMax);
-        float lnAngle;
         float leafHeight;
-        float leafX;
         float colour = 0;
 
         for (int i = 0; i < numLines; i++) {
-            lnAngle = MyVisual.map(i, 0, numLines, 0, MyVisual.TWO_PI);
 
-            // lnAngle = MyVisual.map(i, 0, numLines, 0, MyVisual.TWO_PI);
             colour = MyVisual.map(i, 0, numLines, 0, 255);
 
-            leafX = MyVisual.cos(lnAngle) * 1.3f * distance;
             leafHeight = MyVisual.map(mv.getSmoothedBands()[i], 0, 1000, leafMin, leafMax);
 
             mv.fill(colour, 255, 255);
             mv.noStroke();
             mv.pushMatrix();
-            // mv.rotate(lnAngle);
-            // mv.ellipse(leafX, -bHeight - (leafHeight / 2), 1.5f * distance, leafHeight);
-            // mv.ellipse(0, distance / 2, distance * 0.8f, leafHeight);
             mv.popMatrix();
-            mv.ellipse(leafHeight, 0, leafHeight, distance * 0.8f);
+            mv.ellipse(leafHeight, 0, leafHeight, distance);
             mv.rotate(MyVisual.TWO_PI / numLines);
             
         }
