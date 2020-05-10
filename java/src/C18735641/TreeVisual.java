@@ -1,6 +1,5 @@
 package C18735641;
 
-
 public class TreeVisual {
     MyVisual mv;
     int maxGenerations = 2;
@@ -67,34 +66,29 @@ public class TreeVisual {
 
             mv.line(x, 0, z, x, -bHeight, z);
         }
-        if(bHeight < branchHeight / 2)
-        {
+        if (bHeight < branchHeight / 4) {
             drawLeaves(bHeight);
         }
     }
 
-    private void drawLeaves(float bHeight)
-    {
+    private void drawLeaves(float bHeight) {
         int numLines = mv.getBands().length;
         float distance = MyVisual.map(mv.getSmoothedAmplitude(), 0, 1, trunkMin, trunkMax);
         float leafHeight;
         float colour = 0;
 
         for (int i = 0; i < numLines; i++) {
-
             colour = MyVisual.map(i, 0, numLines, 0, 255);
-
             leafHeight = MyVisual.map(mv.getSmoothedBands()[i], 0, 1000, leafMin, leafMax);
-
             mv.fill(colour, 255, 255);
             mv.noStroke();
             mv.pushMatrix();
             mv.popMatrix();
-            mv.ellipse(leafHeight, 0, leafHeight, distance);
+            mv.ellipse(leafHeight * 1.5f, 0, leafHeight, distance);
             mv.rotate(MyVisual.TWO_PI / numLines);
-            
+
         }
         mv.stroke(255);
     }
-   
+
 }
