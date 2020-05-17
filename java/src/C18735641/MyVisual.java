@@ -8,6 +8,7 @@ public class MyVisual extends Visual
     // AudioBandsVisual abv;
     Flower fl;
     ClusterVisual cv;
+    Spheres sp;
 
     public void settings()
     {
@@ -36,6 +37,7 @@ public class MyVisual extends Visual
         // abv = new AudioBandsVisual(this);
         fl = new Flower(this);
         cv = new ClusterVisual(this);
+        sp = new Spheres(this);
     }
 
     public void keyPressed()
@@ -67,7 +69,8 @@ public class MyVisual extends Visual
         calculateAverageAmplitude();        
         // wf.render();
         // abv.render();
-        fl.render();
+        // fl.render();
         // cv.render();
+        sp.render();
     }
 }
