@@ -154,19 +154,20 @@ This visual manipulates concentric "circles" of spheres using rotations to achie
 #### Without any rotations:
 ![Cluster](images/cluster_no_rotate.png)
 
-The outer for loop draws each "row" of spheres, and the inner for loop draws each individual sphere. The inner for loop draws two sets of spheres - one as the 
+The outer for loop draws each "row" of spheres, and the inner for loop draws each individual sphere. The position of each sphere in the circle is 
+calculated using trigonometry. The inner for loop draws two sets of spheres - one as the 
 "northern hemisphere", and one as the "southern hemisphere" - the second is rotated around the x-axis by PI radians.
 
 #### A single "hemisphere":
 ![Cluster](images/cluster_single_hemisphere.png)
 
 #### Just inner for loop rotation:
-![Cluster](images/cluster_inner_rotation.png)
+![Cluster](images/cluster_inner_rotate.png)
 
 #### Just outer for loop rotation:
-![Cluster](images/cluster_outer_rotation.png)
+![Cluster](images/cluster_outer_rotate.png)
 
-
+Each row of spheres has a diameter and a colour corresponding to a frequency band.
 
 
 ```Java
@@ -208,6 +209,12 @@ The outer for loop draws each "row" of spheres, and the inner for loop draws eac
 ### Flower/Lotus Visual
 
 ![Flower](images/lotus.png)
+
+Again, a nested for loop is used to achieve this shape. The outer for loop draws each row of petals, and the inner for loop draws the individual petal.
+The length of the petals in each band corresponds to a frequency band, and is calculated using the map() method. 
+The inner for loop works by placing a petal, then rotating the matrix around the centre of the flower, ready to place another petal. The petals are also rotated 
+around the x-axis to make them 3D, rather than lying flat. The first row lies flat and each subsequent inner row is raised to a greater and greater angle.
+This is achieved by mapping the i value onto a range from 0 to pi radians, and then rotating around the x-axis by that amount.
 
 ```Java
 for (int i = 0; i < numRows; i++) {
