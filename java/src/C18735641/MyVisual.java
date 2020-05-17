@@ -14,7 +14,7 @@ public class MyVisual extends Visual {
     Welcome we;
 
     int currentSketch = 1;
-    
+
     public void settings() {
         size(800, 800, P3D);
 
@@ -42,38 +42,32 @@ public class MyVisual extends Visual {
         bz = new BoxZoom(this);
         tv = new TreeVisual(this);
         we = new Welcome(this);
+
     }
 
-    public void keyPressed()
-    {
-        
-        if (key == ' ')
-        {
+    public void keyPressed() {
+
+        if (key == ' ') {
             started = true;
             getAudioPlayer().cue(0);
             getAudioPlayer().play();
         }
-        if (key == '1')
-        {
+        if (key == '1') {
             currentSketch = 1;
         }
-        if (key == '2')
-        {
+        if (key == '2') {
             currentSketch = 2;
         }
-        if (key == '3')
-        {
+        if (key == '3') {
             currentSketch = 3;
         }
-        if (key == '4')
-        {
+        if (key == '4') {
             currentSketch = 4;
         }
-        if (key == '5')
-        {
+        if (key == '5') {
             currentSketch = 5;
         }
-        
+
     }
 
     public void draw() {
@@ -93,34 +87,26 @@ public class MyVisual extends Visual {
         // wf.render();
         // abv.render();
         // fl.render();
-        
+
         // cv.render();
-        if(started == false)
-        {
+        if (started == false) {
             we.render();
-        }
-        else
-        {
-            if(currentSketch == 1)
-        {
-            fl.render();
-        }
-        if(currentSketch == 2)
-        {
-            cv.render();
-        }
-        if(currentSketch == 3)
-        {
-            bz.render();
-        }
-        if(currentSketch == 4)
-        {
-            zv.render();
-        }
-        if (currentSketch == 5)
-        {
-            tv.render();
-        }
+        } else {
+            if (currentSketch == 1) {
+                fl.render();
+            }
+            if (currentSketch == 2) {
+                cv.render();
+            }
+            if (currentSketch == 3) {
+                bz.render();
+            }
+            if (currentSketch == 4) {
+                zv.render();
+            }
+            if (currentSketch == 5) {
+                tv.render();
+            }
         }
     }
 }
