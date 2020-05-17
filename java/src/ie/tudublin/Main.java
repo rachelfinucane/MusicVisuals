@@ -1,9 +1,5 @@
 package ie.tudublin;
 
-<<<<<<< HEAD
-=======
-import C18735641.*;
->>>>>>> feature_zooming_boxes
 
 import C18735641.*;
 public class Main

@@ -5,11 +5,13 @@ import ie.tudublin.*;
 public class MyVisual extends Visual {
     // WaveForm wf;
     // AudioBandsVisual abv;
+    Boolean started = false;
     Flower fl;
     ClusterVisual cv;
     BoxZoom bz;
     ZoomVisual zv;
     TreeVisual tv;
+    Welcome we;
 
     int currentSketch = 1;
     
@@ -39,6 +41,7 @@ public class MyVisual extends Visual {
         zv = new ZoomVisual(this);
         bz = new BoxZoom(this);
         tv = new TreeVisual(this);
+        we = new Welcome(this);
     }
 
     public void keyPressed()
@@ -46,6 +49,7 @@ public class MyVisual extends Visual {
         
         if (key == ' ')
         {
+            started = true;
             getAudioPlayer().cue(0);
             getAudioPlayer().play();
         }
@@ -89,7 +93,15 @@ public class MyVisual extends Visual {
         // wf.render();
         // abv.render();
         // fl.render();
-        if(currentSketch == 1)
+        
+        // cv.render();
+        if(started == false)
+        {
+            we.render();
+        }
+        else
+        {
+            if(currentSketch == 1)
         {
             fl.render();
         }
@@ -108,6 +120,7 @@ public class MyVisual extends Visual {
         if (currentSketch == 5)
         {
             tv.render();
+        }
         }
     }
 }
