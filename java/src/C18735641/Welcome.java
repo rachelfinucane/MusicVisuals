@@ -3,6 +3,7 @@ package C18735641;
 
 public class Welcome {
     MyVisual mv;
+    float angle = 0;
 
     public Welcome(MyVisual mv) {
         this.mv = mv;
@@ -25,6 +26,14 @@ public class Welcome {
         mv.fill(subtitleFill, 255, 255);
         mv.textSize(subtitleSize);
         mv.text(subtitle, mv.width / 2, mv.height / 2 + 50);
+        mv.rotateY(angle);
+
+        mv.stroke(255);
+        for(int i = 0; i < 100; i++)
+        {
+            mv.point(mv.random(mv.width ), mv.random(mv.height), mv.random(mv.width / 2));
+            // mv.ellipse(mv.random(mv.width), mv.random(mv.height), 20, 20);
+        }
         
     }
 }
