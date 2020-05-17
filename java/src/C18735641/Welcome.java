@@ -28,7 +28,5 @@ public class Welcome {
         mv.text(subtitle, mv.width / 2, mv.height / 2 + 50);
         mv.rotateY(angle);
 
-        
-        
     }
 }

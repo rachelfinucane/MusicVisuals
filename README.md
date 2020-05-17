@@ -22,6 +22,7 @@ buttons to see them. To go back to the beginning of the track (and visuals), pre
 # How it works
 
 ## MyVisual (The UI)
+
 ```Java
  loadAudio("Joywave - 01. Obsession.mp3");
 
@@ -78,6 +79,8 @@ if (started == false) {
 
 ### Box Zoom Visual
 
+![Box](images/box.png)
+
 ```Java
  boxes = new ArrayList<MyCube>();
         for (int i = 0; i < numBoxes; i++) {
@@ -115,6 +118,9 @@ freqBandSize = MyVisual.map(freqBand, 0, 1000, size / 2, size * 2);
 ```
 	
 ### Cluster Visual
+
+![Cluster](images/cluster.png)
+
 ```Java
  for (int i = 0; i < numSpheres; i++) {
             colour = MyVisual.map(i, 0, numSpheres, 0, 255);
@@ -153,6 +159,8 @@ freqBandSize = MyVisual.map(freqBand, 0, 1000, size / 2, size * 2);
 
 ### Flower/Lotus Visual
 
+![Flower](images/lotus.png)
+
 ```Java
 for (int i = 0; i < numRows; i++) {
 
@@ -179,6 +187,7 @@ for (int i = 0; i < numRows; i++) {
 ```
 
 ### Message
+![Message](images/lotus2.png)
 ```Java
 for (int i = 0; i < numWords; i++) {
             mv.textSize(size);
@@ -224,6 +233,8 @@ public void render()
 		```
 ### Welcome Screen
 
+![Welcome](images/welcome.png)
+
 ```Java
     public void render() {
         String title = "Welcome";
@@ -249,6 +260,8 @@ public void render()
 ```
 
 ### Tree Visual
+
+![Tree](images/tree.png)
 
 hyperlink that one website
 
@@ -323,6 +336,7 @@ for (int i = 0; i < numLines; i++) {
 
 
 ### Zoom Visual
+![Welcome](images/zoom1.png)
 
 ```public void render() {
 
@@ -419,10 +433,8 @@ This is an image using an absolute URL:
 
 This is a youtube video:
 
-[![YouTube](http://img.[![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
-/0.jpg)]
 
-[![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
+[![YouTube](http://img.https://www.youtube.com/watch?v=NGQbYEESZEg/0.jpg)](https://www.youtube.com/watch?v=NGQbYEESZEg)
 
 
 
