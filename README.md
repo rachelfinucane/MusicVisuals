@@ -70,7 +70,7 @@ if (started == false) {
 Once playback begins, MyVisual compares the current playback position to timestamps for various triggers. When it is between one trigger and the next, 
 it renders the appropriate sketch. Below is an extract from this code.
 
-				```Java
+```Java
 				
 				else {
 
@@ -259,7 +259,8 @@ for (int i = 0; i < numWords; i++) {
             colour = (colour + 1) % 255;
             mv.translate(0, yTransform, -yTransform);
             fade = fade / 3;
-        }``` 
+        }
+``` 
 				
 The message moves slowly back and forth around the y-axis by increasing and decreasing the angle of rotation.
 
@@ -279,7 +280,7 @@ else {
 		}
 }
 				
-				```
+```
 				
 ### Noise (Background)
 
@@ -296,7 +297,7 @@ public void render()
         }
     }
 		
-		```
+```
 ### Welcome Screen
 
 ![Welcome](images/welcome.png)
@@ -323,15 +324,15 @@ public void render()
 
     }
 		
-`````
+```
 
 ### Tree Visual
 
 ![Tree](images/tree.png)
 
-The concept for this visual comes from [hyperlink](https://processing.org/examples/tree.html)
+The concept for this visual comes from processing.org [hyperlink](https://processing.org/examples/tree.html)
 
-The method translates the matrix to the bottom of the screen, and it draws a branch from that point to form a trunk. It translates to the top of the trunk
+The method translates the matrix to the bottom of the screen, and it draws a branch up from that point to form a trunk. It translates to the top of the trunk
 and begins the recursive drawing of the tree.
 
 ```Java
@@ -410,7 +411,7 @@ Leaves are drawn in a circle with the end of the branch as their centerpoint. Ea
 
 
 ```Java
-					for (int i = 0; i < numLines; i++) {
+		for (int i = 0; i < numLines; i++) {
             colour = MyVisual.map(i, 0, numLines, 0, 255);
             leafHeight = MyVisual.map(mv.getSmoothedBands()[i], 0, 1000, leafMin, leafMax);
             mv.fill(colour, 255, 255);
