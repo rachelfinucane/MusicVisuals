@@ -490,6 +490,6 @@ the master branch once I was finished. I used a nameing scheme: feature_branch_n
 
 	
 
-![commits](images/number_commits. PNG)
+![commits](images/number_commits.PNG)
 
 	
