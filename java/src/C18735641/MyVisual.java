@@ -16,6 +16,7 @@ public class MyVisual extends Visual {
     Welcome we;
     Message ti;
     Message ly;
+    Noise no;
 
     int currentSketch = 1;
 
@@ -48,7 +49,7 @@ public class MyVisual extends Visual {
         we = new Welcome(this);
         ti = new Message(this, "Obsession", 100);
         ly = new Message(this, "Something to hold in my sights", 50);
-
+        no = new Noise(this);
     }
 
     public void keyPressed() {
@@ -83,6 +84,11 @@ public class MyVisual extends Visual {
         {
             showLyric = true;
         }
+        if (key == 'r')
+        {
+            showTitle = false;
+            showLyric = false;
+        }
 
     }
 
@@ -108,6 +114,7 @@ public class MyVisual extends Visual {
         
         if (started == false) {
             we.render();
+            no.render();
         } else {
             if(showTitle == true)
             {
@@ -119,18 +126,22 @@ public class MyVisual extends Visual {
             }
             if (currentSketch == 1) {
                 fl.render();
+                no.render();
             }
             else if (currentSketch == 2) {
                 cv.render();
+                no.render();
             }
             else if (currentSketch == 3) {
                 bz.render();
+                no.render();
             }
             else if (currentSketch == 4) {
                 zv.render();
             }
             else if (currentSketch == 5) {
                 tv.render();
+                no.render();
             }
         }
     }
