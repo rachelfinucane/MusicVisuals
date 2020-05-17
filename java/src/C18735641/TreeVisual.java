@@ -19,6 +19,7 @@ public class TreeVisual {
     }
 
     public void render() {
+        mv.pushMatrix();
         mv.stroke(255);
         mv.pushMatrix();
         mv.translate(mv.width / 2, mv.height - margin);
@@ -28,6 +29,7 @@ public class TreeVisual {
         drawSelf(branchHeight);
 
         angle = MyVisual.map(mv.getSmoothedAmplitude(), 0, 1, 1f * staticAngle, 1.5f * staticAngle);
+        mv.popMatrix();
     }
 
     private void drawSelf(float bHeight) {

@@ -10,6 +10,7 @@ public class Flower {
     }
 
     public void render() {
+        mv.pushMatrix();
         int numPetals = 8;
         int numRows = mv.getBands().length; // was 5
         float pOffset = PConstants.HALF_PI * 0.3f;
@@ -71,6 +72,7 @@ public class Flower {
         
 
         // mv.popMatrix(); // pop translated screen
+        mv.popMatrix();
 
     }
 }

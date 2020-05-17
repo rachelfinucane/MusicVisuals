@@ -7,6 +7,7 @@ public class Message {
     float size;
     float angle = 0;
     float lerpedAngle = 0;
+    boolean increasing = true;
 
     public Message(MyVisual mv, String message, float size) {
         this.mv = mv;
@@ -15,26 +16,41 @@ public class Message {
     }
 
     public void render() {
-        
-        int numWords = 2;
-        float zTransform = -100;
-        angle = MyVisual.map(mv.getSmoothedAmplitude(), 0, 1, 0, MyVisual.QUARTER_PI);
+
+        int numWords = 3;
+        float yTransform = size / 3;
+        int fade = 255;
         lerpedAngle = MyVisual.lerp(angle, lerpedAngle, 0.1f);
 
         mv.pushMatrix();
-        mv.translate(mv.width / 2, mv.height * 0.8f);
+        mv.translate(mv.width / 2, mv.height * 0.9f);
         mv.textAlign(MyVisual.CENTER);
         mv.rotateY(angle);
 
         for (int i = 0; i < numWords; i++) {
             mv.textSize(size);
-            mv.stroke(colour, 255, 255);
-            mv.fill(colour, 255, 255);
+            mv.fill(colour, 255, fade);
             mv.text(message, 0, 0);
             colour = (colour + 1) % 255;
-            mv.translate(0, 0, zTransform);
+            mv.translate(0, yTransform, -yTransform);
+            fade = fade / 3;
         }
         mv.popMatrix();
-      
+
+        if (increasing == true) {
+            angle += 0.001;
+
+            if (angle > MyVisual.PI * 0.05) {
+                increasing = false;
+            }
+        }
+
+        else {
+            angle -= 0.001;
+            if (angle < -MyVisual.PI * 0.05) {
+                increasing = true;
+            }
+        }
+
     }
 }
