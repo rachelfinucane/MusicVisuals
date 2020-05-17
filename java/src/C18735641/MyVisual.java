@@ -4,10 +4,12 @@ import ie.tudublin.*;
 
 public class MyVisual extends Visual
 {    
+    Boolean started = false;
     // WaveForm wf;
     // AudioBandsVisual abv;
     Flower fl;
     ClusterVisual cv;
+    Welcome we;
 
     public void settings()
     {
@@ -36,12 +38,14 @@ public class MyVisual extends Visual
         // abv = new AudioBandsVisual(this);
         fl = new Flower(this);
         cv = new ClusterVisual(this);
+        we = new Welcome(this);
     }
 
     public void keyPressed()
     {
         if (key == ' ')
         {
+            started = true;
             getAudioPlayer().cue(0);
             getAudioPlayer().play();
         }
@@ -67,7 +71,15 @@ public class MyVisual extends Visual
         calculateAverageAmplitude();        
         // wf.render();
         // abv.render();
-        fl.render();
+        // fl.render();
         // cv.render();
+        if(started == false)
+        {
+            we.render();
+        }
+        else
+        {
+            cv.render();
+        }
     }
 }
