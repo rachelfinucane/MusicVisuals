@@ -84,8 +84,6 @@ public class TreeVisual {
             leafHeight = MyVisual.map(mv.getSmoothedBands()[i], 0, 1000, leafMin, leafMax);
             mv.fill(colour, 255, 255);
             mv.noStroke();
-            mv.pushMatrix();
-            mv.popMatrix();
             mv.ellipse(leafHeight * 1.5f, 0, leafHeight, distance);
             mv.rotate(MyVisual.TWO_PI / numLines);
 

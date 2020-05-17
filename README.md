@@ -243,6 +243,9 @@ for (int i = 0; i < numRows; i++) {
 
 ### Message
 ![Message](images/boxes.png)
+
+The message is repeated a number of times, fading and moving down the y-axis each time. This adds depth to the image. The colour cycles through the colour wheel.
+
 ```Java
 for (int i = 0; i < numWords; i++) {
             mv.textSize(size);
@@ -253,6 +256,7 @@ for (int i = 0; i < numWords; i++) {
             fade = fade / 3;
         }``` 
 				
+The message moves slowly back and forth around the y-axis by increasing and decreasing the angle of rotation.
 
 ```Java
 if (increasing == true) {
@@ -263,16 +267,18 @@ if (increasing == true) {
             }
         }
 
-        else {
-            angle -= 0.001;
-            if (angle < -MyVisual.PI * 0.05) {
-                increasing = true;
-            }
-        }
+else {
+		angle -= 0.001;
+		if (angle < -MyVisual.PI * 0.05) {
+				increasing = true;
+		}
+}
 				
 				```
 				
 ### Noise (Background)
+
+This adds some interest to the background. 200 points are displayed at random x and y co-ordinates on the background.
 
 ```Java
 public void render()
@@ -312,13 +318,16 @@ public void render()
 
     }
 		
-```
+`````
 
 ### Tree Visual
 
 ![Tree](images/tree.png)
 
-hyperlink that one website
+The concept for this visual comes from [hyperlink](https://processing.org/examples/tree.html)
+
+The method translates the matrix to the bottom of the screen, and it draws a branch from that point to form a trunk. It translates to the top of the trunk
+and begins the recursive drawing of the tree.
 
 ```Java
 public void render() {
@@ -336,6 +345,13 @@ public void render() {
     }
 
 ```
+
+This method calls itself until the length of the current generation of branches is 30 or less. It works by starting at the end of the previous branch, 
+rotating the appropriate angle, drawing the new branch, then translating to the end of this new branch. It then recursively calls itself to draw the next
+generation of branches. This continues until the branch is too small to continue. It then returns to the previous branch and goes in the opposite direction, 
+drawing the branches in order of depth-first, rather than breadth-first.
+
+The angle of the changes with the amplitude of the music.
 
 ```Java
 private void drawSelf(float bHeight) {
@@ -361,8 +377,17 @@ private void drawSelf(float bHeight) {
     }
 ```
 
+This method draws the branches for the tree. It is a collection of lines that are drawn around a centre in a circular pattern. The radius of this circle depends 
+on the amplitude. Once the branches start to get small enough, they draw leaves.
+
 ```Java
-for (int i = 0; i < numLines; i++) {
+			private void drawBranch(float bHeight) {
+        int numLines = mv.getBands().length;
+        float distance = MyVisual.map(mv.getSmoothedAmplitude(), 0, 1, trunkMin, trunkMax);
+        float lnAngle;
+
+        float x, z;
+				for (int i = 0; i < numLines; i++) {
             lnAngle = MyVisual.map(i, 0, numLines, 0, MyVisual.TWO_PI);
 
             x = MyVisual.cos(lnAngle) * distance;
@@ -373,16 +398,18 @@ for (int i = 0; i < numLines; i++) {
         if (bHeight < branchHeight / 4) {
             drawLeaves(bHeight);
         }
+			}
 ```
 
+Leaves are drawn in a circle with the end of the branch as their centerpoint. Each leaf corresponds to a frequency band in amplitude and colour.
+
+
 ```Java
-for (int i = 0; i < numLines; i++) {
+					for (int i = 0; i < numLines; i++) {
             colour = MyVisual.map(i, 0, numLines, 0, 255);
             leafHeight = MyVisual.map(mv.getSmoothedBands()[i], 0, 1000, leafMin, leafMax);
             mv.fill(colour, 255, 255);
             mv.noStroke();
-            mv.pushMatrix();
-            mv.popMatrix();
             mv.ellipse(leafHeight * 1.5f, 0, leafHeight, distance);
             mv.rotate(MyVisual.TWO_PI / numLines);
 
@@ -392,6 +419,14 @@ for (int i = 0; i < numLines; i++) {
 
 ### Zoom Visual
 ![Welcome](images/zoom1.png)
+
+Concentric circles are drawn from the outside of the screen inwards, getting smaller as they go. This overcomes the problem of more recently drawn objects
+appearing on top of everything else. Each circle has its own colour. When no music is playing, each circle is static on the screen. The diameter of each successive
+ellipse is reduced by the screen diagonal/the number of circles. This means that they are evenly distributed across the screen. A similar approach is taken
+with the colour of each ellipse.
+
+When the music begins to play, each circle gets smaller by an amount relating to the amplitude of the music. This disrupts the even placement of the circles
+and makes it appear as though they are "zooming".
 
 ```public void render() {
 
@@ -423,7 +458,15 @@ for (int i = 0; i < numLines; i++) {
 
 
 # What I am most proud of in the assignment
-- the entire lotus sketch
+I am most proud of the lotus sketch. I think it is my most beautiful drawing. Working out the placement of each row and petal required time, maths, and lots of 
+paper sketches. 
+
+I am also proud of my use of git. Once I started working on actual features for the project, I developed them in their own branches, merging them back into 
+the master branch once I was finished. I used a nameing scheme: feature_branch_name. I stuck to this naming scheme throughout the project. I also gave meaningful
+ commit messages while developing each sketch: for example, in feature_cluster: *"made circle of spheres that expands and contracts based on amplitude"*. I can
+  track my changes well over time. I also have over 70 commits, which I am very proud of.
+	
+![commits](images/number_commits.png)	
 - figuring out the timing
 - cluster
 - getting the leaves around the tree
