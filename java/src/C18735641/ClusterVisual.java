@@ -23,7 +23,6 @@ public class ClusterVisual {
         for (int i = 0; i < numSpheres; i++) {
             colour = MyVisual.map(i, 0, numSpheres, 0, 255);
             mv.noStroke();
-            mv.lights();
             mv.fill(colour, 255, 255);
             offset = radius * i;
             mv.pushMatrix();
