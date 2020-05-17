@@ -51,7 +51,6 @@ public class MyVisual extends Visual {
 
     public void draw() {
         float position = getAudioPlayer().position();
-        println(position);
         background(0);
         colorMode(HSB);
 
@@ -110,7 +109,7 @@ public class MyVisual extends Visual {
             if (position > m1 && position < m1 + mLength) {
                 obsess.render();
             } 
-            if (position > m2 && position < m2 + mLength) {
+            else if (position > m2 && position < m2 + mLength) {
                 get.render();
             } 
             else if (position > m3 && position < m3 + mLength) {

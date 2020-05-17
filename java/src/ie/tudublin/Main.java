@@ -9,8 +9,6 @@ public class Main
 	{
 		String[] a = {"MAIN"};
 
-        // processing.core.PApplet.runSketch( a, new RotatingAudioBands());		
-
         processing.core.PApplet.runSketch( a, new MyVisual());		
 		
 
