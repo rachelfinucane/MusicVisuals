@@ -149,6 +149,26 @@ at the back of the screen.
 
 ![Cluster](images/cluster.png)
 
+This visual manipulates concentric "circles" of spheres using rotations to achieve a cluster effect. 
+
+#### Without any rotations:
+![Cluster](images/cluster_no_rotate.png)
+
+The outer for loop draws each "row" of spheres, and the inner for loop draws each individual sphere. The inner for loop draws two sets of spheres - one as the 
+"northern hemisphere", and one as the "southern hemisphere" - the second is rotated around the x-axis by PI radians.
+
+#### A single "hemisphere":
+![Cluster](images/cluster_single_hemisphere.png)
+
+#### Just inner for loop rotation:
+![Cluster](images/cluster_inner_rotation.png)
+
+#### Just outer for loop rotation:
+![Cluster](images/cluster_outer_rotation.png)
+
+
+
+
 ```Java
  for (int i = 0; i < numSpheres; i++) {
             colour = MyVisual.map(i, 0, numSpheres, 0, 255);
