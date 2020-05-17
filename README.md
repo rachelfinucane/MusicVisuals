@@ -65,7 +65,7 @@ if (started == false) {
             we.render();
             no.render();
         } 
-				```
+```
 				
 Once playback begins, MyVisual compares the current playback position to timestamps for various triggers. When it is between one trigger and the next, 
 it renders the appropriate sketch. Below is an extract from this code.
