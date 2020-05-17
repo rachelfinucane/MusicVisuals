@@ -4,13 +4,6 @@ Name: Rachel Finucane
 
 Student Number: C18735641
 
-## Instructions
-- Fork this repository and use it a starter project for your assignment
-- Create a new package named your student number and put all your code in this package.
-- You should start by creating a subclass of ie.tudublin.Visual
-- There is an example visualiser called MyVisual in the example package
-- Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
-
 # Description of the assignment
 
 # Instructions
@@ -20,8 +13,12 @@ You should see the welcome screen. To run the music visuals, press the spacebar.
 buttons to see them. To go back to the beginning of the track (and visuals), press the spacebar again.
 
 # How it works
-
+MyVisual.java is a subclass of Visual, which extends PApplet. This is the java file that controls all other objects and sketches.
+The instance of the MyVisual object is passed to each sketch, so that they can access the PApplet methods to draw to the screen.
+MyVisual determines when these sketches run.
 ## MyVisual (The UI)
+
+Each sketch is instantiated - for most we only need one object, but I decided to create three message objects to display a phrase of the song to the screen.
 
 ```Java
  loadAudio("Joywave - 01. Obsession.mp3");
@@ -38,6 +35,8 @@ buttons to see them. To go back to the beginning of the track (and visuals), pre
         no = new Noise(this);
 ```
 
+Pressing the spacebar starts the audio playing, and sets a flag that the audio has begun. This flag is initially *false*, so that the welcome screen can display.
+
 ```Java
 if (key == ' ') {
             started = true;
@@ -46,15 +45,29 @@ if (key == ' ') {
         }
 ```
 
+#### The draw() method
+
+The current position of the audio is found. This is used to trigger different sketches rendering.
+
 ```Java
 float position = getAudioPlayer().position();
 ```
+
+Before playback begins, the welcome screen is displayed, with a background of particle effects.
 
 ```Java
 if (started == false) {
             we.render();
             no.render();
-        } else {
+        } 
+				```
+				
+Once playback begins, MyVisual compares the current playback position to timestamps for various triggers. When it is between one trigger and the next, 
+it renders the appropriate sketch. Below is an extract from this code.
+
+				```Java
+				
+				else {
 
             if (position > 0 && position < t1) {
                 fl.render();
@@ -64,6 +77,8 @@ if (started == false) {
                 no.render();
             }
 ```
+
+Text is displayed alongside some images to coincide with lyrics in the chorus of the song. 
 
 ```Java            
             if (position > m1 && position < m1 + mLength) {
@@ -79,7 +94,12 @@ if (started == false) {
 
 ### Box Zoom Visual
 
-![Box](images/box.png)
+![Box](images/boxes.png)
+
+#### BoxZoom.java
+
+This class creates an arraylist of cube objects, each with starting co-ordinates of random x, y and z values. There are as many cubes as there are audio bands,
+and the size of each cube corresponds to its audio band.
 
 ```Java
  boxes = new ArrayList<MyCube>();
@@ -91,16 +111,24 @@ if (started == false) {
 						
 ```
 
+Every time the screen refreshes, each object in the arraylist is rendered on screen. The current frequency band is passed to the box's render method.
+
 ```Java
 b.render(mv.getSmoothedBands()[i]);
 ```
 
+#### MyCube.java
+
+The size of the box to be drawn is calculated based on the frequency band, using the map() method. The MyCube.java class has x, y and z attributes that are not
+reset every screen refresh. The render() method translates to the x, y and z co-ordinates and draws a box. Since the boxes are moving towards the screen, the z
+value is increased - but if it reaches an upper limit, the z value is reset, and the x and y co-ordinates are set to random, making it appear at a random point
+at the back of the screen.
+
 ```Java
-freqBandSize = MyVisual.map(freqBand, 0, 1000, size / 2, size * 2);
+				freqBandSize = MyVisual.map(freqBand, 0, 1000, size / 2, size * 2);
         speed = mv.getSmoothedAmplitude() * 10;
         mv.noFill();
         mv.stroke(255);
-        z = (z++) % mv.height;
         mv.pushMatrix();
         mv.translate(mv.width / 2, mv.height / 2);
         mv.translate(x, y, z);
@@ -187,7 +215,7 @@ for (int i = 0; i < numRows; i++) {
 ```
 
 ### Message
-![Message](images/lotus2.png)
+![Message](images/boxes.png)
 ```Java
 for (int i = 0; i < numWords; i++) {
             mv.textSize(size);
@@ -367,8 +395,6 @@ for (int i = 0; i < numLines; i++) {
 ```
 
 
-		
-
 # What I am most proud of in the assignment
 - the entire lotus sketch
 - figuring out the timing
@@ -434,8 +460,7 @@ This is an image using an absolute URL:
 This is a youtube video:
 
 
-[![YouTube](http://img.https://www.youtube.com/watch?v=NGQbYEESZEg/0.jpg)](https://www.youtube.com/watch?v=NGQbYEESZEg)
-
+[![YouTube](http://img.youtube.com/vi/NGQbYEESZEg/0.jpg)](https://www.youtube.com/watch?v=NGQbYEESZEg)
 
 
 This is a table:

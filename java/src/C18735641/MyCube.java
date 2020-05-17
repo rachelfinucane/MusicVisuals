@@ -23,7 +23,6 @@ public class MyCube {
         speed = mv.getSmoothedAmplitude() * 10;
         mv.noFill();
         mv.stroke(255);
-        z = (z++) % mv.height;
         mv.pushMatrix();
         mv.translate(mv.width / 2, mv.height / 2);
         mv.translate(x, y, z);
