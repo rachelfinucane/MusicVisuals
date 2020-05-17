@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class BoxZoom {
     MyVisual mv;
-    int numBoxes = 6;
+    int numBoxes = 9;
     float boxSize = 50;
     float[] boxDistance;
     ArrayList<MyCube> boxes;
