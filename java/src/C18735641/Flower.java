@@ -35,7 +35,6 @@ public class Flower {
         mv.rotateX(PConstants.PI * 0.3f) ;
         // mv.rotateX(mv.mouseX*0.1f);
         // mv.rotateY(mv.mouseY*0.1f);
-        MyVisual.println(mv.getBands().length);
 
         mv.noStroke();
 

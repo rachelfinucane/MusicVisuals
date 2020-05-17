@@ -6,12 +6,16 @@ public class MyVisual extends Visual {
     // WaveForm wf;
     // AudioBandsVisual abv;
     Boolean started = false;
+    Boolean showTitle = false;
+    Boolean showLyric = false;
     Flower fl;
     ClusterVisual cv;
     BoxZoom bz;
     ZoomVisual zv;
     TreeVisual tv;
     Welcome we;
+    Message ti;
+    Message ly;
 
     int currentSketch = 1;
 
@@ -42,6 +46,8 @@ public class MyVisual extends Visual {
         bz = new BoxZoom(this);
         tv = new TreeVisual(this);
         we = new Welcome(this);
+        ti = new Message(this, "Obsession", 100);
+        ly = new Message(this, "Something to hold in my sights", 50);
 
     }
 
@@ -51,6 +57,8 @@ public class MyVisual extends Visual {
             started = true;
             getAudioPlayer().cue(0);
             getAudioPlayer().play();
+            showLyric = false;
+            showTitle = false;
         }
         if (key == '1') {
             currentSketch = 1;
@@ -66,6 +74,14 @@ public class MyVisual extends Visual {
         }
         if (key == '5') {
             currentSketch = 5;
+        }
+        if (key == 't')
+        {
+            showTitle = true;
+        }
+        if (key == 'l')
+        {
+            showLyric = true;
         }
 
     }
@@ -87,24 +103,33 @@ public class MyVisual extends Visual {
         // wf.render();
         // abv.render();
         // fl.render();
-
+        // ti.render();
         // cv.render();
+        
         if (started == false) {
             we.render();
         } else {
+            if(showTitle == true)
+            {
+                ti.render();
+            }
+            if(showLyric == true)
+            {
+                ly.render();
+            }
             if (currentSketch == 1) {
                 fl.render();
             }
-            if (currentSketch == 2) {
+            else if (currentSketch == 2) {
                 cv.render();
             }
-            if (currentSketch == 3) {
+            else if (currentSketch == 3) {
                 bz.render();
             }
-            if (currentSketch == 4) {
+            else if (currentSketch == 4) {
                 zv.render();
             }
-            if (currentSketch == 5) {
+            else if (currentSketch == 5) {
                 tv.render();
             }
         }
