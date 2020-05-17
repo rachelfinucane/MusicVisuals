@@ -6,6 +6,11 @@ Student Number: C18735641
 
 # Description of the assignment
 
+[![YouTube](http://img.youtube.com/vi/NGQbYEESZEg/0.jpg)](https://www.youtube.com/watch?v=NGQbYEESZEg)
+
+This is a visual accompaniment to the track *"Obsession*" by Joywave. There is a welcome screen, a background visual, some text, and 5 visuals that interact 
+with the music. Hitting spacebar starts the visuals. Each visual displays in turn based on the timestamp of the track.
+
 # Instructions
 Navigate to *C:\Users\rache\Documents\OOP_java\MusicVisuals\java* and run the compile.sh file on Windows or mcompile.sh on Mac. 
 To run the project, click *run.sh* on Windows, or the *mrun.sh* file for Mac.
@@ -351,7 +356,7 @@ rotating the appropriate angle, drawing the new branch, then translating to the 
 generation of branches. This continues until the branch is too small to continue. It then returns to the previous branch and goes in the opposite direction, 
 drawing the branches in order of depth-first, rather than breadth-first.
 
-The angle of the changes with the amplitude of the music.
+The angle of the branches changes with the amplitude of the music.
 
 ```Java
 private void drawSelf(float bHeight) {
@@ -459,86 +464,13 @@ and makes it appear as though they are "zooming".
 
 # What I am most proud of in the assignment
 I am most proud of the lotus sketch. I think it is my most beautiful drawing. Working out the placement of each row and petal required time, maths, and lots of 
-paper sketches. 
+paper sketches. I am also proud of the zooming circles visual. It took me a long time to work out how to draw each circle so that the colour changed smoothly
+ while each circle moved. I am pleased with the overall timing of the piece - each timestamp coincides with a change in the music and each transition works well.
 
 I am also proud of my use of git. Once I started working on actual features for the project, I developed them in their own branches, merging them back into 
 the master branch once I was finished. I used a nameing scheme: feature_branch_name. I stuck to this naming scheme throughout the project. I also gave meaningful
  commit messages while developing each sketch: for example, in feature_cluster: *"made circle of spheres that expands and contracts based on amplitude"*. I can
   track my changes well over time. I also have over 70 commits, which I am very proud of.
 	
-![commits](images/number_commits.png)	
-- figuring out the timing
-- cluster
-- getting the leaves around the tree
-- working out how to make the zoom visual - how to get around the last drawn thing being on top
-
-# Markdown Tutorial
-
-This is *emphasis*
-
-This is a bulleted list
-
-- Item
-- Item
-
-This is a numbered list
-
-1. Item
-1. Item
-
-This is a [hyperlink](http://bryanduggan.org)
-
-# Headings
-## Headings
-#### Headings
-##### Headings
-
-This is code:
-
-```Java
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-So is this without specifying the language:
-
-```
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-This is an image using a relative URL:
-
-![An image](images/p8.png)
-
-This is an image using an absolute URL:
-
-![A different image](https://bryanduggandotorg.files.wordpress.com/2019/02/infinite-forms-00045.png?w=595&h=&zoom=2)
-
-This is a youtube video:
-
-
-[![YouTube](http://img.youtube.com/vi/NGQbYEESZEg/0.jpg)](https://www.youtube.com/watch?v=NGQbYEESZEg)
-
-
-This is a table:
-
-| Heading 1 | Heading 2 |
-|-----------|-----------|
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
+![commits](images/number_commits.PNG)	
 
